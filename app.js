@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 
 app.use(cors(
   {
-    origin:["https://deploy-mern-1whq.vercel.app"],
+    origin:["https://wonderful-kulfi-628471.netlify.app/"],
     methods:["POST","GET","DELETE","PUT"],
     credentials:true
   }
