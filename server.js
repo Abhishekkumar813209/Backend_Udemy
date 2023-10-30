@@ -39,7 +39,8 @@ cron.schedule("0 0 * * * *", async()=>{
    }
 })
 
+const port = process.env.PORT || 8000
 
-app.listen(process.env.PORT,()=>{
-    console.log(`Server is started at port ${process.env.PORT}`)
+app.listen(port,()=>{
+    console.log(`Server is started at port ${port}`)
 })
