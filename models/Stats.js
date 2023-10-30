@@ -20,4 +20,4 @@ const schema = new mongoose.Schema({
     }
 })
 
-export const Stats = mongoose.model("State",schema);
+export const State = mongoose.model("State",schema);

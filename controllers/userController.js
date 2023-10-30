@@ -8,7 +8,7 @@ import Course from "../models/Course.js";
 import {response} from "express";
 import cloudinary from "cloudinary"
 import getDataUri from "../utils/dataUri.js"
-import { Stats } from "../models/Stats.js";
+import { State } from "../models/Stats.js";
 
 
 export const register = catchAsyncError(async(req,res,next) =>{
@@ -66,10 +66,12 @@ export const logout = catchAsyncError(async(req,res,next)=>{
 
 export const getMyProfile = catchAsyncError(async(req,res,next)=>{
     const user = await User.findById(req.user._id);
+    if(!user) return next(new ErrorHandler("No User FOund",404)) 
     res.status(200).json({
-        success:true,
-        user   
+        message:"Success",
+        user
     })
+
 })
 
 
@@ -287,13 +289,13 @@ export const deleteUser = catchAsyncError(async(req,res,next)=>{
 
 
 User.watch().on("change",async()=>{
-    const stats = await Stats.find({}).sort({createdAt:'desc'}).limit(1);
+    const stats = await State.find({}).sort({createdAt:'desc'}).limit(1);
 
     const subscription = await User.find({"subscription.stats":"active"});
 
     stats[0].users = await User.countDocuments();
     stats[0].subscription = subscription.length;
-    stats[0].createdAt = new Data(Date.now());
+    stats[0].createdAt = new Date(Date.now());
 
     await stats.save();
 })

@@ -3,7 +3,7 @@ import { connectDB } from "./config/database.js";
 import cloudinary from "cloudinary";
 import Razorpay from "razorpay";
 import cron from "node-cron"
-import { Stats } from "./models/Stats.js";
+import { State } from "./models/Stats.js";
 
 
 //database connection
@@ -28,7 +28,7 @@ export const instance = new Razorpay({
 cron.schedule("0 0 * * * *", async()=>{
    try{
     console.log("running")
-    await Stats.create({
+    await State.create({
         views:0,
         subscription:0,
         users:0

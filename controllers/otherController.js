@@ -1,6 +1,6 @@
 import { catchAsyncError } from "../middlewares/catchAsyncError.js";
 import { sendEmail } from "../utils/sendEmail.js";
-import {Stats} from "../models/Stats.js"
+import {State} from "../models/Stats.js"
 
 export const contact = catchAsyncError(async(req,res,next) =>{
    
@@ -31,7 +31,7 @@ export const courseRequest = catchAsyncError(async(req,res,next) =>{
 
 export const getDashboardStats=catchAsyncError(async(req,res,next)=>{
 
-    const stats=await Stats.find({
+    const stats=await State.find({
     }).sort({
         createdAt:'desc'
     }).limit(12)
