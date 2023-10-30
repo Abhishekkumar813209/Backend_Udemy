@@ -11,7 +11,7 @@ dotenv.config({
 
 //express usage
 const app = express();
-const allowedOrigins = ['https://wonderful-kulfi-628471.netlify.app/'];
+const allowedOrigins = ['https://wonderful-kulfi-628471.netlify.app/api/v1'];
 //middlewares
 app.use((req, res, next) => {
   const origin = req.headers.origin;
@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 
 app.use(cors(
   {
-    origin:["https://wonderful-kulfi-628471.netlify.app/"],
+    origin:["https://wonderful-kulfi-628471.netlify.app/api/v1"],
     methods:["POST","GET","DELETE","PUT"],
     credentials:true
   }
