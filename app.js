@@ -11,7 +11,7 @@ dotenv.config({
 
 //express usage
 const app = express();
-const allowedOrigins = ['https://653ff6e348237c24c923b2bc--wonderful-kulfi-628471.netlify.app'];
+const allowedOrigins = ['https://wonderful-kulfi-628471.netlify.app'];
 //middlewares
 app.use((req, res, next) => {
   const origin = req.headers.origin;
